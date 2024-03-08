@@ -1,157 +1,94 @@
-EEmeter: tools for calculating metered energy savings
-=====================================================
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EEmeter：计算计量节能的工具</font></font></h1><a id="user-content-eemeter-tools-for-calculating-metered-energy-savings" class="anchor" aria-label="永久链接：EEmeter：计算计量节能的工具" href="#eemeter-tools-for-calculating-metered-energy-savings"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<a href="https://travis-ci.org/openeemeter/eemeter" rel="nofollow"><img alt="构建状态" src="https://camo.githubusercontent.com/0537b5df2d252c2ee850ae3d181497228a1baa6da3653713def6feadc795232e/68747470733a2f2f7472617669732d63692e6f72672f6f70656e65656d657465722f65656d657465722e7376673f6272616e63683d6d6173746572" data-canonical-src="https://travis-ci.org/openeemeter/eemeter.svg?branch=master" style="max-width: 100%;"></a>
+<a href="https://github.com/openeemeter/eemeter"><img alt="执照" src="https://camo.githubusercontent.com/41111a1cea9e0fd3ca1a2721f681e8cbc63e9b78d0b3323725ab9405af138501/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6f70656e65656d657465722f65656d657465722e737667" data-canonical-src="https://img.shields.io/github/license/openeemeter/eemeter.svg" style="max-width: 100%;">
+</a>
+<a href="https://eemeter.readthedocs.io/?badge=master" rel="nofollow"><img alt="文件状态" src="https://camo.githubusercontent.com/4e020e8376043af9c76176432ba0a351d52c8daf9d854bd62be89b1c0720d5b4/68747470733a2f2f72656164746865646f63732e6f72672f70726f6a656374732f65656d657465722f62616467652f3f76657273696f6e3d6d6173746572" data-canonical-src="https://readthedocs.org/projects/eemeter/badge/?version=master" style="max-width: 100%;"></a>
+<a href="https://pypi.python.org/pypi/eemeter" rel="nofollow"><img alt="PyPI版本" src="https://camo.githubusercontent.com/ccece18c202d8121ef839aa6bd17f5a15f6d709db90959e016f171bec72e6846/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f65656d657465722e737667" data-canonical-src="https://img.shields.io/pypi/v/eemeter.svg" style="max-width: 100%;">
+</a>
+<a href="https://codecov.io/gh/openeemeter/eemeter" rel="nofollow"><img alt="代码覆盖率状态" src="https://camo.githubusercontent.com/678badaa19e1aad3699ceb98801d3fcfae550b630864a5703aaab19d270f1b92/68747470733a2f2f636f6465636f762e696f2f67682f6f70656e65656d657465722f65656d657465722f6272616e63682f6d61737465722f67726170682f62616467652e737667" data-canonical-src="https://codecov.io/gh/openeemeter/eemeter/branch/master/graph/badge.svg" style="max-width: 100%;">
+</a>
+<a href="https://github.com/ambv/black"><img alt="代码风格" src="https://camo.githubusercontent.com/7d770c433d6198d89f8c1e2f187b904a9721d176259d0e97157337741cc8e837/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f64652532307374796c652d626c61636b2d3030303030302e737667" data-canonical-src="https://img.shields.io/badge/code%20style-black-000000.svg" style="max-width: 100%;">
+</a>
+<hr>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EEmeter</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> — 一个开源工具包，用于实施和开发计算标准化计量能耗 (NMEC) 和避免能源使用的标准方法。</font></font></p>
+<a name="user-content-background-why-use-the-eemeter-library"></a>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">背景 - 为什么使用 EEMeter 库</font></font></h2><a id="user-content-background---why-use-the-eemeter-library" class="anchor" aria-label="永久链接：背景 - 为什么使用 EEMeter 库" href="#background---why-use-the-eemeter-library"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在撰写本文时（2018 年 9 月），OpenEEmeter 在 eemeter 包和同级</font></font><a href="http://eeweather.openee.io" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eeweather 包中实现，包含</font></font></a><font style="vertical-align: inherit;"></font><a href="https://caltrack.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CalTRACK 方法</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的最完整的开源实现
+</font><font style="vertical-align: inherit;">，该方法指定了一系列计算和汇总避免能源使用估计值的方法。特别适合在按效果付费 (P4P) 计划中使用的单一仪表。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eemeter 包包含一个用 python 语言编写的工具包，可以帮助实现符合 CalTRACK 的分析。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">它包含一组模块化的函数、参数和类，可配置为运行 CalTRACK 方法和封闭变体。</font></font></p>
+<div dir="auto">
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">笔记</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请记住，使用 OpenEEmeter 对于遵守 CalTRACK 方法规范既不是必要的也不是充分的。</font><font style="vertical-align: inherit;">例如，虽然 CalTRACK 方法出于标准化和一致性的目的设置了特定的硬限制，但 EEmeter 库可以配置为编辑或完全忽略这些限制。</font><font style="vertical-align: inherit;">这是因为 emeter 包不仅用于符合 CalTRACK 方法，还用于</font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CalTRACK 方法。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另请记住，EEmeter 假定在使用 eemeter 之前已发生 CalTRACK 方法中指定的某些数据清理任务。</font><font style="vertical-align: inherit;">该包会主动公开警告，尽可能指出此类性质的问题。</font></font></p>
+</div>
+<a name="user-content-installation"></a>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2><a id="user-content-installation" class="anchor" aria-label="永久链接：安装" href="#installation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EEmeter 是一个 python 包，可以通过 pip 安装。</font></font></p>
+<pre><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ pip 安装 eemeter
+</font></font></pre>
+<a name="user-content-features"></a>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></h2><a id="user-content-features" class="anchor" aria-label="永久链接：特点" href="#features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">标准方法的参考实施</font></font><ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CalTRACK 每日方法</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CalTRACK 每月计费方式</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CalTRACK 每小时方法</font></font></li>
+</ul>
+</li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">灵活的温度数据来源。</font><font style="vertical-align: inherit;">请参阅</font></font><a href="https://eeweather.openee.io" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EEweather</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">候选模型选择</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据充分性检查</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模型序列化</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一流的警告报告</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pandas 数据框支持</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可视化工具</font></font></li>
+</ul>
+<a name="user-content-roadmap-for-2020-development"></a>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2020年发展路线图</font></font></h2><a id="user-content-roadmap-for-2020-development" class="anchor" aria-label="永久链接：2020年发展路线图" href="#roadmap-for-2020-development"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenEEmeter 项目今年的增长目标分为两类：</font></font></p>
+<ol dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区目标 - 我们希望帮助我们的社区蓬勃发展并持续发展。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">技术目标 - 我们希望继续以新的方式构建库，使其尽可能易于使用。</font></font></li>
+</ol>
+<a name="user-content-community-goals"></a>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区目标</font></font></h3><a id="user-content-community-goals" class="anchor" aria-label="永久链接：社区目标" href="#community-goals"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发项目文档和教程</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">许多用户表示，当教程过时时，上手是多么困难。</font><font style="vertical-align: inherit;">今年我们将投入时间和精力来帮助创建基于 API 文档和现有教程的高质量教程。</font></font></p>
+<ol start="2" dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">让贡献变得更容易</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">随着我们用户群的增长，用户回馈图书馆的需求和愿望也在增长，我们希望尽可能做到无缝。</font><font style="vertical-align: inherit;">这意味着编写和维护贡献指南，并创建清单来指导用户完成整个过程。</font></font></p>
+<a name="user-content-technical-goals"></a>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">技术目标</font></font></h3><a id="user-content-technical-goals" class="anchor" aria-label="永久链接：技术目标" href="#technical-goals"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实施新的 CalTRACK 建议</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CalTRACK 流程不断改进 OpenEEmeter 中使用的底层方法。</font><font style="vertical-align: inherit;">我们的主要技术目标是跟上这些变化，并继续成为 CalTRACK 方法设置过程中测试和实验的资源。</font></font></p>
+<ol start="2" dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每小时模型可视化</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenEEMeter 库中实现的按小时方法尚未像每日方法和计费方法那样封装有高质量的可视化效果。</font><font style="vertical-align: inherit;">当我们使用该库构建和打包新的可视化效果时，更多的用户将能够理解、部署并为每小时方法做出贡献。</font></font></p>
+<ol start="3" dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">天气正常和异常情况</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持 OpenEEmeter 的 EEweather 软件包附带了公开可用的天气正常场景，但可以帮助简化这一过程的一项功能是打包用于创建自定义天气年份场景的方法。</font></font></p>
+<ol start="4" dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更大的天气覆盖范围</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EEweather 软件包中的气象站覆盖范围包括美国和澳大利亚的完整覆盖范围，但通过一些技术工作，可以扩展到更大范围甚至全球范围。</font></font></p>
+<a name="user-content-license"></a>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">执照</font></font></h2><a id="user-content-license" class="anchor" aria-label="永久链接：许可证" href="#license"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该项目已获得 [Apache 2.0]（LICENSE）许可。</font></font></p>
+<a name="user-content-other-resources"></a>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他资源</font></font></h2><a id="user-content-other-resources" class="anchor" aria-label="固定链接：其他资源" href="#other-resources"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><a href="/openeemeter/eemeter/blob/master/CONTRIBUTING.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CONTRIBUTING</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：如何为项目做出贡献。</font></font></li>
+<li><a href="/openeemeter/eemeter/blob/master/MAINTAINERS.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MAINTAINERS</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：项目维护者的有序列表。</font></font></li>
+<li><a href="/openeemeter/eemeter/blob/master/CHARTER.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">章程</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：开源项目章程。</font></font></li>
+<li><a href="/openeemeter/eemeter/blob/master/CODE_OF_CONDUCT.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CODE_OF_CONDUCT</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：贡献者的行为准则。</font></font></li>
+</ul>
 
-.. image:: https://travis-ci.org/openeemeter/eemeter.svg?branch=master
-  :target: https://travis-ci.org/openeemeter/eemeter
-  :alt: Build Status
-
-.. image:: https://img.shields.io/github/license/openeemeter/eemeter.svg
-  :target: https://github.com/openeemeter/eemeter
-  :alt: License
-
-.. image:: https://readthedocs.org/projects/eemeter/badge/?version=master
-  :target: https://eemeter.readthedocs.io/?badge=master
-  :alt: Documentation Status
-
-.. image:: https://img.shields.io/pypi/v/eemeter.svg
-  :target: https://pypi.python.org/pypi/eemeter
-  :alt: PyPI Version
-
-.. image:: https://codecov.io/gh/openeemeter/eemeter/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/openeemeter/eemeter
-  :alt: Code Coverage Status
-
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-  :target: https://github.com/ambv/black
-  :alt: Code Style
-
----------------
-
-**EEmeter** — an open source toolkit for implementing and developing standard
-methods for calculating normalized metered energy consumption (NMEC) and
-avoided energy use.
-
-Background - why use the EEMeter library
-----------------------------------------
-
-At time of writing (Sept 2018), the OpenEEmeter, as implemented in the eemeter
-package and sibling `eeweather package <http://eeweather.openee.io>`_, contains the
-most complete open source implementation of the
-`CalTRACK Methods <https://caltrack.org/>`_, which
-specify a family of ways to calculate and aggregate estimates avoided energy
-use at a single meter particularly suitable for use in pay-for-performance
-(P4P) programs.
-
-The eemeter package contains a toolkit written in the python langage which may
-help in implementing a CalTRACK compliant analysis.
-
-It contains a modular set of of functions, parameters, and classes which can be
-configured to run the CalTRACK methods and close variants.
-
-.. note::
-
-    Please keep in mind that use of the OpenEEmeter is neither necessary nor
-    sufficient for compliance with the CalTRACK method specification. For example,
-    while the CalTRACK methods set specific hard limits for the purpose of
-    standardization and consistency, the EEmeter library can be configured to edit
-    or entirely ignore those limits. This is becuase the emeter package is used not
-    only for compliance with, but also for *development of* the CalTRACK methods.
-
-    Please also keep in mind that the EEmeter assumes that certain data cleaning
-    tasks specified in the CalTRACK methods have occurred prior to usage with the
-    eemeter. The package proactively exposes warnings to point out issues of this
-    nature where possible.
-
-Installation
-------------
-
-EEmeter is a python package and can be installed with pip.
-
-::
-
-    $ pip install eemeter
-
-Features
---------
-
-- Reference implementation of standard methods
-
-  - CalTRACK Daily Method
-  - CalTRACK Monthly Billing Method
-  - CalTRACK Hourly Method
-
-- Flexible sources of temperature data. See `EEweather <https://eeweather.openee.io>`_.
-- Candidate model selection
-- Data sufficiency checking
-- Model serialization
-- First-class warnings reporting
-- Pandas dataframe support
-- Visualization tools
-
-Roadmap for 2020 development
-----------------------------
-
-The OpenEEmeter project growth goals for the year fall into two categories:
-
-1. Community goals - we want help our community thrive and continue to grow.
-2. Technical goals - we want to keep building the library in new ways that make it
-   as easy as possible to use.
-
-Community goals
-~~~~~~~~~~~~~~~
-
-1. Develop project documentation and tutorials
-
-A number of users have expressed how hard it is to get started when tutorials are
-out of date. We will dedicate time and energy this year to help create high quality
-tutorials that build upon the API documentation and existing tutorials.
-
-2. Make it easier to contribute
-
-As our user base grows, the need and desire for users to contribute back to the library
-also grows, and we want to make this as seamless as possible. This means writing and
-maintaining contribution guides, and creating checklists to guide users through the
-process.
-
-
-Technical goals
-~~~~~~~~~~~~~~~
-
-1. Implement new CalTRACK recommendations
-
-The CalTRACK process continues to improve the underlying methods used in the
-OpenEEmeter. Our primary technical goal is to keep up with these changes and continue
-to be a resource for testing and experimentation during the CalTRACK methods setting
-process.
-
-2. Hourly model visualizations
-
-The hourly methods implemented in the OpenEEMeter library are not yet packaged with
-high quality visualizations like the daily and billing methods are. As we build and
-package new visualizations with the library, more users will be able to understand,
-deploy, and contribute to the hourly methods.
-
-3. Weather normal and unusual scenarios
-
-The EEweather package, which supports the OpenEEmeter, comes packaged with publicly
-available weather normal scenarios, but one feature that could help make that easier
-would be to package methods for creating custom weather year scenarios.
-
-4. Greater weather coverage
-
-The weather station coverage in the EEweather package includes full coverage of US and
-Australia, but with some technical work, it could be expanded to include greater, or
-even worldwide coverage.
-
-License
--------
-
-This project is licensed under [Apache 2.0](LICENSE).
-
-Other resources
----------------
-
-- `CONTRIBUTING <CONTRIBUTING.md>`_: how to contribute to the project.
-- `MAINTAINERS <MAINTAINERS.md>`_: an ordered list of project maintainers.
-- `CHARTER <CHARTER.md>`_: open source project charter.
-- `CODE_OF_CONDUCT <CODE_OF_CONDUCT.md>`_: Code of conduct for contributors.
+</article></div>
